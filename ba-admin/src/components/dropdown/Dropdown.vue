@@ -3,7 +3,7 @@
     <label>{{ label }}</label>
     <p-dropdown
       class="input-text"
-      v-model="chosenValue"
+      v-model="selectedValue"
       :options="transformEnum(enumObj)"
       optionLabel="value"
       optionValue="key"
@@ -16,12 +16,13 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import { Conferences } from "@/enums/conferences";
-import { Divisions } from "@/enums/divisions";
-import { KeyValueModel } from "@/models/keyValueModel";
+import { Conferences } from "@/core/enums/conferences";
+import { Divisions } from "@/core/enums/divisions";
+import { KeyValueModel } from "@/core/models/keyValueModel";
 
 export default defineComponent({
-  name: "form-dropdown",
+  name: "dropdown-default",
+
   props: {
     label: {
       type: String,
@@ -34,18 +35,20 @@ export default defineComponent({
     enumObj: {
       required: true,
     },
-    currentValue: {
+    value: {
       type: String,
       required: false,
       default: null,
     },
     modelValue: [String],
   },
+
   data: function () {
     return {
-      chosenValue: this.currentValue,
+      selectedValue: this.value,
     };
   },
+
   methods: {
     transformEnum<T extends Divisions | Conferences>(
       enumData: T

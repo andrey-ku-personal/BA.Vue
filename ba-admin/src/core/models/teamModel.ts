@@ -1,6 +1,6 @@
-import { Divisions } from "@/enums/divisions";
-import { Conferences } from "@/enums/conferences";
-import { FileModel } from "@/models/fileModel";
+import { Divisions } from "@/core/enums/divisions";
+import { Conferences } from "@/core/enums/conferences";
+import { FileModel } from "@/core/models/fileModel";
 
 export interface TeamModel {
   id: number;

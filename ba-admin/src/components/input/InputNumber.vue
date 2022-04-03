@@ -1,11 +1,11 @@
 <template>
   <div>
     <label>{{ label }}</label>
-    <p-input-text
-      class="input-text"
+    <p-input-number
+      class="input-number"
       type="text"
       :value="modelValue"
-      @input="$emit('update:modelValue', $event.target.value)"
+      @input="$emit('update:modelValue', $event.value)"
     />
   </div>
 </template>
@@ -14,20 +14,23 @@
 import { defineComponent } from "vue";
 
 export default defineComponent({
-  name: "form-input-text",
+  name: "input-number",
 
   props: {
     label: {
       type: String,
       required: true,
     },
-    modelValue: [String],
+    modelValue: {
+      type: Number,
+      default: 0,
+    },
   },
 });
 </script>
 
 <style scoped>
-.input-text {
+.input-number {
   width: 200px;
 }
 </style>
